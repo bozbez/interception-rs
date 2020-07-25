@@ -1,7 +1,7 @@
 [package]
 name = "interception"
 description = "Safe wrapper for Interception"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Joe Kaushal <joe.kaushal@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/bozbez/interception-rs"
