@@ -25,9 +25,6 @@ pub type Predicate = extern "C" fn(device: Device) -> bool;
 
 bitflags! {
     pub struct MouseState: u16 {
-        const NONE = 0;
-        const ALL = 65535;
-
         const LEFT_BUTTON_DOWN = 1;
         const LEFT_BUTTON_UP = 2;
 
@@ -83,9 +80,6 @@ bitflags! {
 
 bitflags! {
     pub struct KeyFilter: u16 {
-        const NONE = 0;
-        const ALL = 65535;
-
         const DOWN = 1;
         const UP = 2;
 
@@ -236,21 +230,21 @@ impl Interception {
 
     pub fn get_filter(&self, device: Device) -> Filter {
         if is_invalid(device) {
-            return Filter::KeyFilter(KeyFilter::NONE);
+            return Filter::KeyFilter(KeyFilter::empty());
         }
 
         let raw_filter = unsafe { raw::interception_get_filter(self.ctx, device) };
         if is_mouse(device) {
             let filter = match MouseFilter::from_bits(raw_filter) {
                 Some(filter) => filter,
-                None => MouseFilter::NONE,
+                None => MouseFilter::empty(),
             };
 
             Filter::MouseFilter(filter)
         } else {
             let filter = match KeyFilter::from_bits(raw_filter) {
                 Some(filter) => filter,
-                None => KeyFilter::NONE,
+                None => KeyFilter::empty(),
             };
 
             Filter::KeyFilter(filter)
