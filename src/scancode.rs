@@ -1,7 +1,8 @@
 use num_enum::TryFromPrimitive;
+use serde::{Deserialize, Serialize};
 
 // ref: https://handmade.network/wiki/2823-keyboard_inputs_-_scancodes,_raw_input,_text_input,_key_names
-#[derive(Debug, Eq, PartialEq, Copy, Clone, TryFromPrimitive)]
+#[derive(Serialize, Deserialize, Hash, Debug, Eq, PartialEq, Copy, Clone, TryFromPrimitive)]
 #[repr(u16)]
 pub enum ScanCode {
     Esc = 0x01,
@@ -106,7 +107,7 @@ pub enum ScanCode {
 
     NumpadPeriod = 0x53,
     AltPrintScreen = 0x54, /* Alt + print screen. */
-    Int1 = 0x56,            /* Key between the left shift and Z. */
+    Int1 = 0x56,           /* Key between the left shift and Z. */
 
     F11 = 0x57,
     F12 = 0x58,

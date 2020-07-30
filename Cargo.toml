@@ -1,7 +1,7 @@
 [package]
 name = "interception"
 description = "Safe wrapper for Interception"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Joe Kaushal <joe.kaushal@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/bozbez/interception-rs"
@@ -11,3 +11,4 @@ license = "MIT OR Apache-2.0"
 interception-sys = "0.1.3"
 bitflags = "1.2.1"
 num_enum = "0.5.0"
+serde = { version = "1.0.114", features = ["derive"] }
